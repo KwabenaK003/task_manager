@@ -1,26 +1,17 @@
-# Ask user to enter their first name
-name1 = input("What is your first name?\n")
-name1_upper = name1.upper()
-# Ask user to enter their last name
-name2 = input("What is your last name?\n")
-name2_upper = name2.upper()
-# Print iser's fullname in UPPERCASE
-# e.g If user full name is Michael Hammond, it should rather print MICHAEL HAMMOND
-print(f"Welcome, {name1_upper} {name2_upper}")
+import add
+import show
+import update
+import delete
 
-# Ask user to enter their first name
-name1 = input("What is your first name?\n")
-# Ask user to enter their last name
-name2 = input("What is your last name?\n")
-# Print iser's fullname in UPPERCASE
-# e.g If user full name is Michael Hammond, it should rather print MICHAEL HAMMOND
-print(f"Welcome, {name1.upper()} {name2.upper()}")
+add_task_response = add.add_task("Sleep")
+print(add_task_response)
 
+show_task_response = show.show_tasks()
+print(show_task_response)
 
-user1 = int(input("Please type a number.\n"))
-user = user1 / 2
-if type(user) is int:
-    print("The value is an even number")
-else:
-    print("The value is an odd number")
+update_task_response = update.update_task("Sleep", "Washing")
+print(update_task_response)
+
+delete_task_response = delete.delete_task("Washing")
+print(delete_task_response)
 
