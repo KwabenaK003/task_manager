@@ -1,17 +1,11 @@
-import add
-import show
-import update
-import delete
+import tkinter as tk
+import ui
 
-add_task_response = add.add_task("Sleep")
-print(add_task_response)
 
-show_task_response = show.show_tasks()
-print(show_task_response)
+app = tk.Tk()
+app.title("Task Manager")
+app.geometry("800x500")
 
-update_task_response = update.update_task("Sleep", "Washing")
-print(update_task_response)
 
-delete_task_response = delete.delete_task("Washing")
-print(delete_task_response)
-
+ui.show_all_tasks_frame(app)
+app.mainloop()
