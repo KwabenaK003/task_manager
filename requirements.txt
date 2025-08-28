@@ -1,2 +1,2 @@
 pymongo
-pythonv-dotenv
+python-dotenv
