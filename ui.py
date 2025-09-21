@@ -29,28 +29,30 @@ def show_edit_task_frame(task, app):
     frame = tk.Frame(master=app)
     frame.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
 
-    label = tk.Label(master=frame, text=f"Edit task: {task["title"]}")
-    label.grid()
+    label = tk.Label(master=frame, text="Edit task", font=("Arial", 14, "bold"))
+    label.grid(row=0, column=0, columnspan=2, pady=10)
     # Add an entry widget and show the task title
     # Add a button with text Update for saving the changes
     # Add a button with text Back / Cancel for remove the frame
 
     task_entry = tk.Entry(master=frame)
     task_entry.insert(0, task["title"])
-    task_entry.grid(column=1)
+    task_entry.grid(column=0)
 
     
     update_btn = tk.Button(
         master=frame,
         text = "Update",
+        width=8,
         command=lambda: handle_update(task["_id"], task_entry.get(), app))
-    update_btn.grid(row=2)
+    update_btn.grid(row=2, column=0, pady=10, sticky="e")
 
     cancel_btn = tk.Button(
         master=frame,
         text = "Back",
+        width=8,
         command=lambda: frame.destroy())
-    cancel_btn.grid(row=2, column=1)
+    cancel_btn.grid(row=2, column=1, pady=10, sticky="w")
 
     frame.tkraise()
 
@@ -64,7 +66,14 @@ def show_add_ask_frame(app):
     entry = tk.Entry(master=frame)
     entry.grid()
     btn = tk.Button(master=frame, text="Submit", command=lambda: submit_task(entry.get(), app))
-    btn.grid()
+    btn.grid(pady=10)
+
+    cancel_btn = tk.Button(
+        master=frame,
+        text = "Back",
+        width=8,
+        command=lambda: frame.destroy())
+    cancel_btn.grid(row=2, column=1, pady=10, sticky="w")
 
     frame.tkraise()
 
@@ -75,7 +84,7 @@ def show_all_tasks_frame(app):
     tasks = commands.get_tasks().to_list()
     for task in tasks:
         checkbtn = tk.Checkbutton(master=frame, text=task["title"])
-        checkbtn.grid(row=tasks.index(task), column=0)
+        checkbtn.grid(row=tasks.index(task), column=0, sticky="w", padx=5, pady=5)
 
         edit_btn = tk.Button(
             master=frame,
